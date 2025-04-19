@@ -21,7 +21,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 split_docs = text_splitter.split_documents(documents=docs)
 embedder = OpenAIEmbeddings(
     model = "text-embedding-3-large",
-    api_key="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"
+    # api_key="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"
 )
 
 # vector_store = QdrantVectorStore.from_documents(
