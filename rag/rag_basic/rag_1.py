@@ -6,6 +6,7 @@ from langchain_qdrant import QdrantVectorStore
 from dotenv import load_dotenv
 from openai import OpenAI
 import json
+import os
 load_dotenv()
 client = OpenAI()
 pdf_path = Path(__file__).parent / "FinalDraft.pdf"
@@ -21,7 +22,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 split_docs = text_splitter.split_documents(documents=docs)
 embedder = OpenAIEmbeddings(
     model = "text-embedding-3-large",
-    api_key="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"
+    api_key= os.environ['OPENAI_API_KEY']
 )
 
 vector_store = QdrantVectorStore.from_documents(
