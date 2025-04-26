@@ -21,17 +21,17 @@ text_splitter = RecursiveCharacterTextSplitter(
 split_docs = text_splitter.split_documents(documents=docs)
 embedder = OpenAIEmbeddings(
     model = "text-embedding-3-large",
-    # api_key="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"
+    api_key="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"
 )
 
-# vector_store = QdrantVectorStore.from_documents(
-#     documents=[],
-#     url = "http://localhost:6333",
-#     collection_name="learning_langchain",
-#     embedding=embedder
-# )
+vector_store = QdrantVectorStore.from_documents(
+    documents=[],
+    url = "http://localhost:6333",
+    collection_name="learning_langchain",
+    embedding=embedder
+)
 
-# vector_store.add_documents(documents = split_docs)
+vector_store.add_documents(documents = split_docs)
 print("Ingestion done")
 
 # print("DOCS",len(docs))
