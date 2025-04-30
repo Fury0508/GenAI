@@ -1,16 +1,26 @@
 from dotenv import load_dotenv
-from openai import OpenAI
+# from openai import OpenAI
 import json
 import requests
 import os
+from langfuse.openai import openai
 load_dotenv()
-client = OpenAI()
+# from langsmith.wrappers import wrap_openai
+from langfuse import Langfuse
+from langsmith import traceable
+from langfuse.decorators import observe
 
+# client = wrap_openai(OpenAI())
 
+client = openai.Client()
+
+@observe()
 def run_command(command):
     result = os.system(command=command)
     return result
 # print(run_command("ls"))
+
+@observe()
 def get_weather(city:str):
     print("🔨 Tool called: get_weather", city)
     url = f"https://wttr.in/{city}?format=%C+%t"
@@ -19,6 +29,7 @@ def get_weather(city:str):
         return f"The weather is {city} is {response.text}"
     return "Something went wrong"
 
+@observe()
 def add(x,y):
     print("🔨 Tool called: add", x,y)
     return x+y
