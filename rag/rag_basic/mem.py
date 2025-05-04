@@ -74,3 +74,5 @@ while True:
     message = input(">> ")
     print("BOT: ", chat(message=message))
     
+
+    print("--------------------------------")
