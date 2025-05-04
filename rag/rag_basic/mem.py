@@ -1,7 +1,6 @@
 from mem0 import Memory
 from openai import OpenAI
 
-OPENAI_API_KEY = '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'
 
 
 QUADRANT_HOST = "localhost"
